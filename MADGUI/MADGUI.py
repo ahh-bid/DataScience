@@ -105,10 +105,7 @@ if choice == 'Main Page':
 		# This section is to explain briefly what the point of the app
 
 		st.title('Cryptek Labs Predicitive Decision Science')
-		st.write('Welcome! The objective of this project is to help you for data analysis, prediction model and to find the best \n'
-			'next sample to reach your objective using Bayesian Optimisation.\n'
-			'You will be asked to complete different parts of this program. You must start by completing the Main Page where you are currently located. Then you will be able to do either the prediction or the Bayesian optimization. \n'
-			"*Note: if you change anything after submitting your selection, you must click 'Submit' again.")
+		st.write('Note: if you change anything after submitting your selection, you must click Submit again.')
 		
 		st.header('1 - Data upload')
 		st.info("Read carefully before uploading your data ")
