@@ -104,11 +104,11 @@ if choice == 'Main Page':
 	with header: 
 		# This section is to explain briefly what the point of the app
 
-		st.title('MADGUI - Multi-Application Design GUI')
+		st.title('Cryptek Labs Predicitive Decision Science')
 		st.write('Welcome! The objective of this project is to help you for data analysis, prediction model and to find the best \n'
 			'next sample to reach your objective using Bayesian Optimisation.\n'
 			'You will be asked to complete different parts of this program. You must start by completing the Main Page where you are currently located. Then you will be able to do either the prediction or the Bayesian optimization. \n'
-			"Take note that if you change anything after submitting your selection, you must click 'Submit' again.")
+			"*Note: if you change anything after submitting your selection, you must click 'Submit' again.")
 		
 		st.header('1 - Data upload')
 		st.info("Read carefully before uploading your data ")
@@ -116,8 +116,8 @@ if choice == 'Main Page':
 
 		# Explanation of the rules for uploading the data with example
 		
-		with st.expander('⚠ Read before continuing ⚠'):
-			st.write('Before uploading, you have to make sure that your data (csv/xlsx) look like this :')
+		with st.expander('⚠  Read before continuing  ⚠'):
+			st.write('Before uploading, you have to make sure that your data (csv/xlsx) looks like this :')
 			st.image('./MADGUI/Data/exemple_data.png')
 			st.write('The first line of your data file must contain the names of your columns. Your data should be in the first sheet of your file and there should be no blank cells. All values in your dataset should be numerical.')
 			st.write("Features are the parameters that you can change during your experiment. Targets are the results of those experiment and are your objective.")
@@ -128,7 +128,7 @@ if choice == 'Main Page':
 			st.dataframe(exemple)
 			st.subheader('Upload your dataset on the sidebar')
 			
-		st.write('Firstly, you will have to upload your data. To do that you have to click on the "Browse File" button in the sidebar.')
+		st.write('Upload your data to get started. Click the "Browse File" button in the sidebar.')
 	
 	with dataset: 
 		# This part is to read the data with pandas as a DataFrame and display the selected data to show if it worked correctly
@@ -143,7 +143,7 @@ if choice == 'Main Page':
 
 		st.session_state['data_file'] = data_file
 
-		st.write(f'Your data from the file {uploaded_file.name} are represented below, you can check if everything is alright.')
+		st.write(f'Your data from the file {uploaded_file.name} are represented below, verify if everything looks alright.')
 		st.dataframe(data_file)
 			
 	with feature_selection: 
@@ -151,7 +151,7 @@ if choice == 'Main Page':
 		# columns of his data are feature and which are target.
 
 		st.header('2 - Selection of your features and targets for the project')
-		st.write('On this section of the program, you must select which columns of your dataset are the features you want to analyse and which columns are the targets that you want to predict or improve.')
+		st.write('In this section, Please select which columns are the features you want to analyze and which columns are the targets that you want to predict or improve.')
 		
 		### Selection of the feature
 		st.write('Columns with a standard deviation of 0 are already deselected, as well as columns that contain text. This is done automatically to eliminate columns that do not provide useful information for analysis and prediction.')
@@ -215,7 +215,7 @@ if choice == 'Main Page':
 				Z = pd.concat([Z, st.session_state['data_file_target'].iloc[:,i]],axis=1)
 
 			# Graph with the correlation between each features and target 
-			st.write("By clicking on the button below, you will display the correlation graph between all the features/target that you selected. It can take some times to charge it.")
+			st.write("Clicking on the button below will display the correlation graph between all the features/target that you selected. Please note, it can take a few minutes to render.")
 			correlation = st.button("Display the correlation graph")
 			
 			if correlation:
@@ -229,7 +229,7 @@ if choice == 'Main Page':
 					data=img,
 					file_name=fn_2,
 					mime='image/png')
-			st.success('You can now navigate to the other pages of the program. It is important to note that if you make any changes to your selection on this page, you must submit it again to ensure that the changes are saved and applied to the analysis.')
+			st.success('You can now navigate to the other pages. Please note that if you make any changes to your selection on this page, you must submit it again to ensure that the changes are saved and applied to the analysis.')
 			
 			# To initialize this variable without it being reset everytime in the next page
 			st.session_state['test']=False #For the third page (constraints)
@@ -298,8 +298,8 @@ elif choice == 'Prediction':
 		st.header("Target's Prediction using different methods (ElasticNet, RandomForest and XGBRegressor)")
 
 		with st.expander('Explanation'):
-			st.write('Here you will have to choose between different methods of prediction: ElasticNet, RandomForest or XGBRegressor.'
-				'\n\n You will also have to choose the cross validation that you want to use. '
+			st.write('Please select a prediction method (ElasticNet, RandomForest or XGBRegressor)'
+				'\n\n and the cross validation type to be used. '
 				"Cross-validation is a method used in machine learning to assess the performance of a model. \n\n K-fold cross-validation and Leave-One-Out cross-validation are two different methods of cross-validation. The main difference between the two is how the data is divided into subsets for training and validation. K-fold cross-validation divides the data into K equally sized folds and repeat the process k times, while Leave-One-Out cross-validation uses all but one data point as the training set and repeat the process N times where N is the number of data points in the dataset.")
 
 		# This function is the function to use the predictor (ElasticNet, RandomForest, XGBRegressor), it can certainly be move outside of this 
