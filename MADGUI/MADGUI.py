@@ -77,8 +77,8 @@ def convert_feat_lim(df):
 with st.sidebar:
 	st.image('./MADGUI/madgui_logo.png',use_column_width='auto')
 	# Navigation part in the sidebar
-	choice = option_menu('Navigation', ['Main Page','Prediction','Bayesian','About','Contact'],
-		icons = ['house', 'tree','app-indicator','info-circle','mailbox'],
+	choice = option_menu('Navigation', ['Main Page','Prediction','Bayesian'],
+		icons = ['house', 'tree','app-indicator'],
 		menu_icon = 'map', default_index=0,
 		styles={
         "container": {"padding": "5!important", "background-color": "#fafafa"},
@@ -1112,38 +1112,4 @@ elif choice == 'Bayesian':
 				file_name = 'proposed_list_with_predi.csv',
 				mime = 'text/csv')
 
-if choice == 'About':
-	
-	
-	
-	def read_markdown_file(markdown_file):
-	    return Path(markdown_file).read_text()
-
-	intro_markdown = read_markdown_file("README.md")
-	st.markdown(intro_markdown, unsafe_allow_html=True)
-
-if choice == 'Contact':
-	st.header("Contact")
-	st.write("If you have any questions, bugs, recommandations, you can contact us by using the form below.")
-	
-	contact_form = """
-	<form action="https://formsubmit.co/{}" method="POST">
-	     <input type="hidden" name="_captcha" value="false">
-	     <input type="text" name="name" placeholder="Your name" required>
-	     <input type="email" name="email" placeholder="Your email" required>
-	     <textarea name="message" placeholder="Your message here"></textarea>
-	     <button type="submit">Send</button>
-	</form>
-	""".format(st.secrets["email_address"])
-
-	st.markdown(contact_form, unsafe_allow_html=True)
-
-	# Use Local CSS File
-	def local_css(file_name):
-	    path = os.path.dirname(__file__)
-	    file_name = path+"/"+file_name
-	    with open(file_name) as f:
-	        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-	local_css("style/email_style.css")
 	
