@@ -6,6 +6,31 @@ import streamlit as st
 # CSS to inject contained in a multiline string
 hide_streamlit_style = """
 <style>
+           /* Hide the hamburger menu and original Streamlit footer */
+           #MainMenu {visibility: hidden;}
+           footer {visibility: hidden;}
+ 
+           /* Hide specific elements like the Streamlit cloud badge/logo */
+           .viewerBadge_container__r5tak {display: none;}
+ 
+           /* Custom Footer Text */
+           footer:after {
+             content:'Cryptek Labs Inc. © 2024 All Rights Reserved.'; 
+             visibility: visible;
+             display: block;
+             position: relative;
+             padding: 5px;
+             top: 2px;
+             text-align: center;
+           }
+</style>
+           """
+ 
+# Inject CSS with Markdown
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+# CSS to inject contained in a multiline string
+hide_streamlit_style = """
+<style>
            /* Hide the hamburger menu and Streamlit footer */
            #MainMenu {visibility: hidden;}
            footer {visibility: hidden;}
