@@ -3,6 +3,38 @@
 # The recessary librairy are :
 
 import streamlit as st
+# Hide the Streamlit footer and branding
+hide_streamlit_style = """
+<style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            footer:after {
+              content:'Your own text or footer here'; 
+              visibility: visible;
+              display: block;
+              position: relative;
+              #background-color: red;
+              padding: 5px;
+              top: 2px;
+            }
+</style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+# CSS to inject contained in a multiline string
+hide_streamlit_style = """
+<style>
+            /* Hide the hamburger menu and Streamlit footer */
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+ 
+            /* Hide Streamlit header elements, logo and 'Fork this app' link */
+            .css-1d391kg {display: none;}
+            header {visibility: hidden;}
+</style>
+            """
+ 
+# Inject CSS with Markdown
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 from streamlit_option_menu import option_menu
 import pandas as pd
 import numpy as np
