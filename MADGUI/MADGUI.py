@@ -3,6 +3,20 @@
 # The recessary librairy are :
 
 import streamlit as st
+# CSS to inject contained in a multiline string
+hide_streamlit_style = """
+<style>
+           /* Hide the hamburger menu and Streamlit footer */
+           #MainMenu {visibility: hidden;}
+           footer {visibility: hidden;}
+ 
+           /* Hide specific elements like the Streamlit cloud badge/logo */
+           .viewerBadge_container__r5tak {display: none;}
+</style>
+           """
+ 
+# Inject CSS with Markdown
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 # Hide the Streamlit footer and branding
 hide_streamlit_style = """
 <style>
