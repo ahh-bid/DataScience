@@ -3,22 +3,36 @@
 # The recessary librairy are :
 
 import streamlit as st
-# JavaScript to inject
-js = """
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Target the footer by its class and change its content
-  var footer = document.querySelector('.css-cicdov.e1fqkh3o0');
-  if (footer) footer.innerHTML = 'Cryptek Labs Inc. © 2024 All Rights Reserved.';
-  // Hide the logo
-  var logo = document.querySelector('.viewerBadge_container__r5tak');
-  if (logo) logo.style.display = 'none';
-});
-</script>
-"""
+# CSS to inject contained in a multiline string
+hide_streamlit_style = """
+<style>
+           /* Hide the hamburger menu */
+           #MainMenu {visibility: hidden;}
  
-# Inject the JavaScript through Markdown
-st.markdown(js, unsafe_allow_html=True)
+           /* Hide Streamlit logo and link */
+           .viewerBadge_container__r5tak {display: none !important;}
+ 
+           /* Attempt to hide the footer content */
+           footer {
+               visibility: hidden !important;
+               display: none !important;
+           }
+ 
+           /* If there's a specific part of the footer to hide, targeting directly */
+           footer .css-1oko9i1 {
+               visibility: hidden !important;
+               display: none !important;
+           }
+ 
+           /* Hide the additional text that might be added in the footer */
+           footer:after {
+               display: none !important;
+           }
+</style>
+           """
+ 
+# Inject CSS with Markdown
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 # CSS to inject contained in a multiline string
 hide_streamlit_style = """
 <style>
